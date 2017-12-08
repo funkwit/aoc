@@ -19,7 +19,7 @@ fn main() {
 		println!("Entering level {}, {}-{}, first midpoint @ {} and then every {}", level, min, max, first_midpoint, midpoint_spacing);
 	}
 	let nearest_midpoint = ((((target - first_midpoint) + midpoint_spacing/2) / midpoint_spacing) * midpoint_spacing) + first_midpoint;
-    let to_middle = target - nearest_midpoint;
-    let moves = to_middle + level;
-    println!("{} to middle, {} back to 1, {} total", to_middle, level, moves);
+	let to_middle = target - nearest_midpoint;
+	let moves = to_middle + level;
+	println!("{} to middle, {} back to 1, {} total", to_middle, level, moves);
 }
