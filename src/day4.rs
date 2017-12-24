@@ -10,7 +10,7 @@ fn sort(s: &str) -> String {
 }
 
 fn main() {
-	let f = File::open("day4input.txt").unwrap();
+	let f = File::open("input/day4").unwrap();
 	let file = BufReader::new(&f);
 	let mut valid_count = 0;
 	for line in file.lines() {

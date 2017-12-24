@@ -4,7 +4,7 @@ use std::fs::File;
 
 fn main() {
 	let part2 = true;
-	let f = File::open("day5input.txt").unwrap();
+	let f = File::open("input/day5").unwrap();
 	let file = BufReader::new(&f);
 	let mut vec = Vec::new();
 	for line in file.lines() {
