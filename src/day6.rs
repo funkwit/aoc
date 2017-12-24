@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::HashMap;
 use std::io::BufReader;
 use std::io::BufRead;
 use std::fs::File;
@@ -15,7 +15,7 @@ fn main() {
 	}
 
 	println!("Bucket count {}", vec.len());
-	let mut seen = HashSet::new();
+	let mut seen = HashMap::new();
 	let mut dup = false;
 	let mut cycles = 0;
 
@@ -41,11 +41,11 @@ fn main() {
 
 		// Using a debug-rendered vector as the key here is totally hacky. Loldontcare.
 		let rendered = format!("{:?}", vec);
-		if seen.contains(&rendered) {
-			println!("Duplicate state: {}", rendered);
+		if seen.contains_key(&rendered) {
+			println!("Duplicate state: {} at cycle {} ({} ago)", rendered, seen.get(&rendered).unwrap(), cycles - seen.get(&rendered).unwrap());
 			dup = true;
 		}
-		seen.insert(rendered);
+		seen.insert(rendered, cycles);
 
 	}
 
