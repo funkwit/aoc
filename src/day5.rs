@@ -3,6 +3,7 @@ use std::io::BufRead;
 use std::fs::File;
 
 fn main() {
+	let part2 = true;
 	let f = File::open("day5input.txt").unwrap();
 	let file = BufReader::new(&f);
 	let mut vec = Vec::new();
@@ -17,7 +18,11 @@ fn main() {
 	while index >= 0 && (index as usize) < vec.len() {
 		steps = steps + 1;
 		let jump = vec[index as usize];
-		vec[index as usize] = jump + 1;
+		if jump >= 3 && part2 {
+			vec[index as usize] = jump - 1;
+		} else {
+			vec[index as usize] = jump + 1;			
+		}
 		index = index + jump;
 	}
 	println!("Broke out in {} steps", steps);
